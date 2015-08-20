@@ -14,11 +14,17 @@ namespace Track_Video_Watching
 
         }
 
+        /// <summary>
+        /// Redirect to register page
+        /// </summary>
         protected void cmdRegister_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Register.aspx");
         }
 
+        /// <summary>
+        /// Check details and login to page
+        /// </summary>
         protected void cmdLogin_Click(object sender, EventArgs e)
         {
 
