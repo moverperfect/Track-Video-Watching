@@ -69,7 +69,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DatabaseDDL.SQL" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Web.config" />
