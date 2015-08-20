@@ -10,7 +10,6 @@ namespace Track_Video_Watching
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         /// <summary>
@@ -37,7 +36,8 @@ namespace Track_Video_Watching
                 var matchHash = Utilities.HashPassword(txtPassword.Text, users.Rows[0][2].ToString(), MD5.Create());
                 if (matchHash == users.Rows[0][1].ToString())
                 {
-                    var coookieValue = Utilities.HashPassword(txtUsername.Text + users.Rows[0][1].ToString(), users.Rows[0][2].ToString(), 
+                    var coookieValue = Utilities.HashPassword(txtUsername.Text + users.Rows[0][1],
+                        users.Rows[0][2].ToString(),
                         MD5.Create());
                     Response.Cookies.Add(new HttpCookie("Username", txtUsername.Text));
                     Response.Cookies.Add(new HttpCookie("Token", coookieValue));

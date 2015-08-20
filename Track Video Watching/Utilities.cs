@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace Track_Video_Watching
 {
@@ -25,7 +22,7 @@ namespace Track_Video_Watching
             // interlocked because it is a static value and we want
             // it to roll forward safely.
 
-            var random = new Random(unchecked((int)DateTime.Now.Ticks));
+            var random = new Random(unchecked((int) DateTime.Now.Ticks));
 
 
             // Create an array of random values.

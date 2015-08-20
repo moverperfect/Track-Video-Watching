@@ -142,8 +142,8 @@ namespace Track_Video_Watching
                     var schemaTable = dr.GetSchemaTable();
                     foreach (DataRowView row in schemaTable.DefaultView)
                     {
-                        var columnName = (string)row["ColumnName"];
-                        var type = (Type)row["DataType"];
+                        var columnName = (string) row["ColumnName"];
+                        var type = (Type) row["DataType"];
                         dt.Columns.Add(columnName, type);
                     }
 
