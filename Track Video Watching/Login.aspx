@@ -18,8 +18,8 @@
         <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="cmdLogin" runat="server" Text="Login" />
-&nbsp;<asp:Button ID="cmdRegister" runat="server" Text="Register" />
+        <asp:Button ID="cmdLogin" runat="server" Text="Login" OnClick="cmdLogin_Click" />
+&nbsp;<asp:Button ID="cmdRegister" runat="server" Text="Register" OnClick="cmdRegister_Click" />
     
     </div>
     </form>
