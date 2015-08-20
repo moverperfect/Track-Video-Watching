@@ -15,7 +15,7 @@
         <br />
         <br />
         Password<br />
-        <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
         <br />
         <br />
         <asp:Button ID="cmdLogin" runat="server" Text="Login" OnClick="cmdLogin_Click" />
