@@ -38,7 +38,7 @@
         <br />
         <asp:Button ID="btnAdd" runat="server" Text="Add Video" OnClick="btnAdd_Click" />
 &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="btnReturn" runat="server" Text="Return to Dashboard" />
+        <asp:Button ID="btnReturn" runat="server" Text="Return to Dashboard" OnClick="btnReturn_Click" />
         <br />
         <br />
     
