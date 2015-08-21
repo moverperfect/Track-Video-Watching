@@ -36,7 +36,7 @@
         :<asp:TextBox ID="txtSec" runat="server" Width="16px"></asp:TextBox>
         <br />
         <br />
-        <asp:Button ID="btnAdd" runat="server" Text="Add Video" />
+        <asp:Button ID="btnAdd" runat="server" Text="Add Video" OnClick="btnAdd_Click" />
 &nbsp;&nbsp;&nbsp;
         <asp:Button ID="btnReturn" runat="server" Text="Return to Dashboard" />
         <br />
