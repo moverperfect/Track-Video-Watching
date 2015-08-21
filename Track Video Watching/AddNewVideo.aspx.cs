@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data;
-using System.Security.Authentication.ExtendedProtection;
 using System.Security.Cryptography;
 using System.Web.UI;
 
@@ -8,17 +7,26 @@ namespace Track_Video_Watching
 {
     public partial class AddNewVideo : Page
     {
+        /// <summary>
+        /// Sets calendar to the current day
+        /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
             Calendar1.TodaysDate = DateTime.Today;
             Calendar1.SelectedDate = DateTime.Today;
         }
 
+        /// <summary>
+        /// Makes the other textbox visibile when it is selected
+        /// </summary>
         protected void cboPlatform_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtPlatform.Visible = cboPlatform.Text == "Other";
         }
 
+        /// <summary>
+        /// Adds all of the information for the new video to the database
+        /// </summary>
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             var mysql = new SqlConnector("db_trackvideowatching");
