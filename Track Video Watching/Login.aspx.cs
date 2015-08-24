@@ -29,8 +29,7 @@ namespace Track_Video_Watching
 
             var users =
                 (DataTable)
-                    mysql.Select("SELECT Username, Password_Hash, Salt FROM tbl_Users WHERE Username = '" +
-                                 txtUsername.Text + "';");
+                    mysql.Select("SELECT Username, Password_Hash, Salt FROM tbl_Users WHERE Username = @1;", txtUsername.Text);
             if (users.Rows.Count != 0)
             {
                 var matchHash = Utilities.HashPassword(txtPassword.Text, users.Rows[0][2].ToString(), MD5.Create());
