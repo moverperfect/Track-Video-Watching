@@ -50,6 +50,12 @@ namespace Track_Video_Watching
                     platform = txtPlatform.Text;
                 }
                 mysql.NonQuery("INSERT INTO tbl_records ( FK_UserID, Video_Platform, Date_Watched, Channel, Length) VALUES ('" + user.Rows[0][0] + "','" + platform + "','" + Calendar1.SelectedDate.ToString("yyyy-MM-dd") + "','" + txtChannel.Text + "','" + txtHour.Text + ":" + txtMin.Text + ":" + txtSec.Text + "');");
+                cboPlatform.Text = "YouTube";
+                txtPlatform.Text = "";
+                txtChannel.Text = "";
+                txtHour.Text = "";
+                txtMin.Text = "";
+                txtSec.Text = "";
                 Response.Write("Video has been added to database");
                 return;
             }
