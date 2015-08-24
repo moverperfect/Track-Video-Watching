@@ -18,6 +18,7 @@
             <asp:ListItem>C4 OD</asp:ListItem>
             <asp:ListItem>Netflix</asp:ListItem>
             <asp:ListItem>ITV Player</asp:ListItem>
+            <asp:ListItem>TED</asp:ListItem>
             <asp:ListItem>Other</asp:ListItem>
         </asp:DropDownList>
         &nbsp;&nbsp;&nbsp;
