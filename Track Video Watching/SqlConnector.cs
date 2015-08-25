@@ -110,11 +110,16 @@ namespace Track_Video_Watching
         /// Execute a NonQuery to the server
         /// </summary>
         /// <param name="query">The query to be sent</param>
-        public void NonQuery(String query)
+        public void NonQuery(String query, params String[] userStrings)
         {
             if (OpenConnection())
             {
                 var cmd = new MySqlCommand(query, _connection);
+
+                for (int i = 0; i < userStrings.Length; i++)
+                {
+                    cmd.Parameters.AddWithValue("@" + (i + 1), userStrings[i]);
+                }
 
                 cmd.ExecuteNonQuery();
 
@@ -126,8 +131,9 @@ namespace Track_Video_Watching
         /// Execute a Select statement to the sql server
         /// </summary>
         /// <param name="query">The select statement</param>
+        /// <param name="userStrings"></param>
         /// <returns>The datatable containing the data</returns>
-        public Object Select(String query)
+        public Object Select(String query, params String [] userStrings)
         {
             try
             {
@@ -136,6 +142,11 @@ namespace Track_Video_Watching
                 if (OpenConnection())
                 {
                     var cmd = new MySqlCommand(query, _connection);
+
+                    for (int i = 0; i < userStrings.Length; i++)
+                    {
+                        cmd.Parameters.AddWithValue("@" + (i + 1), userStrings[i]);
+                    }
 
                     var dr = cmd.ExecuteReader();
 
@@ -175,13 +186,18 @@ namespace Track_Video_Watching
         /// </summary>
         /// <param name="query">The SQL query</param>
         /// <returns>The counted amount</returns>
-        public int Count(String query)
+        public int Count(String query, params String[] userStrings)
         {
             var count = 0;
 
             if (OpenConnection())
             {
                 var cmd = new MySqlCommand(query, _connection);
+
+                for (int i = 0; i < userStrings.Length; i++)
+                {
+                    cmd.Parameters.AddWithValue("@" + (i + 1), userStrings[i]);
+                }
 
                 count = int.Parse(cmd.ExecuteScalar().ToString());
 

@@ -33,7 +33,7 @@ namespace Track_Video_Watching
 
             var user =
                 (DataTable)
-                    mysql.Select("SELECT PK_UserID, Username, Password_Hash, Salt FROM tbl_users WHERE Username = '" + Request.Cookies["Username"].Value + "';");
+                    mysql.Select("SELECT PK_UserID, Username, Password_Hash, Salt FROM tbl_users WHERE Username = @1;", Request.Cookies["Username"].Value);
 
             if (user.Rows.Count == 0)
             {
@@ -49,7 +49,7 @@ namespace Track_Video_Watching
                 {
                     platform = txtPlatform.Text;
                 }
-                mysql.NonQuery("INSERT INTO tbl_records ( FK_UserID, Video_Platform, Date_Watched, Channel, Length) VALUES ('" + user.Rows[0][0] + "','" + platform + "','" + Calendar1.SelectedDate.ToString("yyyy-MM-dd") + "','" + txtChannel.Text + "','" + txtHour.Text + ":" + txtMin.Text + ":" + txtSec.Text + "');");
+                mysql.NonQuery("INSERT INTO tbl_records ( FK_UserID, Video_Platform, Date_Watched, Channel, Length) VALUES ( @1, @2, @3, @4, @5:@6:@7 );", user.Rows[0][0].ToString(), platform, Calendar1.SelectedDate.ToString("yyyy-MM-dd"), txtChannel.Text, txtHour.Text, txtMin.Text, txtSec.Text);
                 cboPlatform.Text = "YouTube";
                 txtPlatform.Text = "";
                 txtChannel.Text = "";

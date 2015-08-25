@@ -27,9 +27,7 @@ namespace Track_Video_Watching
 
             var users =
                 (DataTable)
-                    mysql.Select("Select Username, EmailAddress From tbl_users WHERE Username = '" + txtUsername.Text +
-                                 "' OR EmailAddress = '" +
-                                 txtEmail.Text + "';");
+                    mysql.Select("Select Username, EmailAddress From tbl_users WHERE Username = @1 OR EmailAddress = @2;", txtUsername.Text, txtEmail.Text);
             if (users.Rows.Count != 0)
             {
                 Response.Write("A user already exists with this username/email");
@@ -40,8 +38,7 @@ namespace Track_Video_Watching
 
             var password = Utilities.HashPassword(txtPassword.Text, salt, MD5.Create());
 
-            mysql.NonQuery("INSERT INTO tbl_users ( Username, Password_hash, Salt, EmailAddress) VALUES ('" +
-                           txtUsername.Text + "','" + password + "','" + salt + "','" + txtEmail.Text + "');");
+            mysql.NonQuery("INSERT INTO tbl_users ( Username, Password_hash, Salt, EmailAddress) VALUES ( @1, @2, @3, @4 );", txtUsername.Text, password, salt, txtEmail.Text);
 
             HtmlMeta meta = new HtmlMeta();
             meta.HttpEquiv = "Refresh";
