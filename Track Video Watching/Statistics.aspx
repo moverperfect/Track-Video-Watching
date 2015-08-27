@@ -13,8 +13,8 @@
     <div>
     
         <asp:Button ID="btnShowMinPlat" runat="server" OnClick="btnShowMinPlat_Click" Text="Show minutes by video platform" />
-        <br />
-        <asp:Chart ID="graMinPlat" runat="server" Height="264px" Width="272px">
+        &nbsp;<br />
+        <asp:Chart ID="graMinPlat" runat="server" Height="256px" Width="1201px">
             <series>
                 <asp:Series ChartType="Pie" Name="Series1">
                 </asp:Series>
@@ -25,7 +25,24 @@
             </chartareas>
         </asp:Chart>
     
-    </div>
+    &nbsp;</div>
+        <p>
+            <asp:DropDownList ID="cboChannel" runat="server">
+            </asp:DropDownList>
+            <asp:Button ID="btnShowMinChan" runat="server" OnClick="btnShowMinChan_Click" Text="Show minutes by channel" Width="172px" />
+        </p>
+        <p>
+            <asp:Chart ID="graMinCha" runat="server" Height="417px" Width="1165px">
+                <Series>
+                    <asp:Series ChartType="Pie" Name="Series1">
+                    </asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1">
+                    </asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
+        </p>
     </form>
 </body>
 </html>
