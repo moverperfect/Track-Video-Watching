@@ -8,17 +8,20 @@ namespace Track_Video_Watching
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var mysql = new SqlConnector("db_trackvideowatching");
+            if(!IsPostBack)
+            {
+                var mysql = new SqlConnector("db_trackvideowatching");
 
-            var list =
-                (DataTable)
-                    mysql.Select(
-                        "SELECT Video_Platform FROM tbl_records INNER JOIN tbl_users ON FK_UserId = PK_UserId WHERE Username = @1 GROUP by Video_Platform;",
-                        Request.Cookies["Username"].Value);
+                var list =
+                    (DataTable)
+                        mysql.Select(
+                            "SELECT Video_Platform FROM tbl_records INNER JOIN tbl_users ON FK_UserId = PK_UserId WHERE Username = @1 GROUP by Video_Platform;",
+                            Request.Cookies["Username"].Value);
             
-             cboChannel.DataSource = list;
-            cboChannel.DataTextField = "Video_Platform";
-            cboChannel.DataBind();
+                cboChannel.DataSource = list;
+                cboChannel.DataTextField = "Video_Platform";
+                cboChannel.DataBind();
+            }
         }
 
         protected void btnShowMinPlat_Click(object sender, EventArgs e)
@@ -51,7 +54,7 @@ namespace Track_Video_Watching
                 (DataTable)
                     mysql.Select(
                         "SELECT Channel, SUM( TIME_TO_SEC( `length` ) ) as Total FROM tbl_records INNER JOIN tbl_users ON FK_UserId = PK_UserId WHERE Username = @1 AND Video_Platform = @2 GROUP BY Channel ORDER BY Total DESC",
-                        Request.Cookies["Username"].Value, cboChannel.Text);
+                        Request.Cookies["Username"].Value, cboChannel.SelectedValue);
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Channel");
