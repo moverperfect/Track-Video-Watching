@@ -15,7 +15,7 @@ namespace Track_Video_Watching
         {
             var mysql = new SqlConnector("db_trackvideowatching");
 
-            var platMin = (DataTable) mysql.Select("SELECT Video_Platform, Length FROM tbl_records INNER JOIN tbl_users ON FK_UserId = PK_UserId WHERE Username = @1 GROUP BY Video_Platform;", Request.Cookies["Username"].Value);
+            var platMin = (DataTable) mysql.Select("SELECT Video_Platform, SUM( TIME_TO_SEC( `length` ) ) FROM tbl_records INNER JOIN tbl_users ON FK_UserId = PK_UserId WHERE Username = @1 GROUP BY Video_Platform;", Request.Cookies["Username"].Value);
 
             DataTable dt = new DataTable();
             dt.Columns.Add("Platform");
