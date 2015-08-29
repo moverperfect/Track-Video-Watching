@@ -12,8 +12,11 @@ namespace Track_Video_Watching
         /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
-            Calendar1.TodaysDate = DateTime.Today;
-            Calendar1.SelectedDate = DateTime.Today;
+            if (!IsPostBack)
+            {
+                Calendar1.TodaysDate = DateTime.Today;
+                Calendar1.SelectedDate = DateTime.Today;
+            }
         }
 
         /// <summary>
