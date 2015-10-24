@@ -17,8 +17,6 @@ namespace Track_Video_Watching
                 Calendar1.TodaysDate = DateTime.Today;
                 Calendar1.SelectedDate = DateTime.Today;
             }
-            txtChannel.Attributes.Add("OnKeyUp", "javascript:this.blur();javascript:this.focus();");
-            txtChannel.Attributes.Add("OnFocus", "javascript:SetEnd(this);");
         }
 
         /// <summary>
@@ -67,52 +65,9 @@ namespace Track_Video_Watching
             Response.Write("Authentication failed");
         }
 
-        /// <summary>
-        /// Returns back to the dashboard page
-        /// </summary>
         protected void btnReturn_Click(object sender, EventArgs e)
         {
             Response.Redirect("Dashboard.aspx");
-        }
-
-        /// <summary>
-        /// Calls the ajax suggestion box updater
-        /// </summary>
-        protected void txtChannel_TextChanged(object sender, EventArgs e)
-        {
-            UpdateList();
-        }
-
-        /// <summary>
-        /// Updates the ajax suggestion box with suggestions from the database  
-        /// </summary>
-        private void UpdateList()
-        {
-            var mysql = new SqlConnector("db_trackvideowatching");
-
-            var suggestions = (DataTable)mysql.Select("SELECT Channel FROM tbl_records WHERE Channel LIKE '" + txtChannel.Text + "%' GROUP BY Channel;");
-
-            var list = new string[5];
-
-            for (int index = 0; index < list.Length; index++)
-            {
-                if ((suggestions.Rows.Count - 1) >= index)
-                {
-                    list[index] = suggestions.Rows[index][0].ToString();
-                }
-            }
-
-            Repeater1.DataSource = list;
-            Repeater1.DataBind();
-            txtChannel.Focus();
-        }
-
-        /// <summary>
-        /// Sleeps the thread for a smoother input
-        /// </summary>
-        protected void Repeater1_ItemDataBound(object sender, System.Web.UI.WebControls.RepeaterItemEventArgs e)
-        {
-            System.Threading.Thread.Sleep(100);
         }
     }
 }
