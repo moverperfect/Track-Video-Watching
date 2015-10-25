@@ -8,16 +8,18 @@ namespace Track_Video_Watching
 {
     public partial class Login : Page
     {
+        /// <summary>
+        /// On page load, remove any cookies that the user has
+        /// </summary>
         protected void Page_Load(object sender, EventArgs e)
         {
-        }
+            // If they dont have any cookies then return
+            var httpCookie = Request.Cookies["UserId"];
+            if (httpCookie == null) return;
 
-        /// <summary>
-        /// Redirect to register page
-        /// </summary>
-        protected void cmdRegister_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Register.aspx");
+            // Remove the cookies if they have them
+            Response.Cookies["UserId"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["Token"].Expires = DateTime.Now.AddDays(-1);
         }
 
         /// <summary>
@@ -25,31 +27,33 @@ namespace Track_Video_Watching
         /// </summary>
         protected void cmdLogin_Click(object sender, EventArgs e)
         {
+            incorrectPassword.Visible = false;
+            incorrectUser.Visible = false;
+
             var mysql = new SqlConnector("db_trackvideowatching");
 
             var users =
                 (DataTable)
-                    mysql.Select("SELECT Username, Password_Hash, Salt FROM tbl_Users WHERE Username = @1;", txtUsername.Text);
+                    mysql.Select("SELECT Username, Password_Hash, Salt FROM tbl_Users WHERE Username = @1;", txtUsername.Value);
             if (users.Rows.Count != 0)
             {
-                var matchHash = Utilities.HashPassword(txtPassword.Text, users.Rows[0][2].ToString(), MD5.Create());
-                if (matchHash == users.Rows[0][1].ToString())
+                if (txtPassword.Value != "" && Utilities.HashPassword(txtPassword.Value, users.Rows[0][2].ToString(), MD5.Create()) == users.Rows[0][1].ToString())
                 {
-                    var coookieValue = Utilities.HashPassword(txtUsername.Text + users.Rows[0][1],
+                    var coookieValue = Utilities.HashPassword(txtUsername.Value + users.Rows[0][1],
                         users.Rows[0][2].ToString(),
                         MD5.Create());
-                    Response.Cookies.Add(new HttpCookie("Username", txtUsername.Text));
+                    Response.Cookies.Add(new HttpCookie("Username", txtUsername.Value));
                     Response.Cookies.Add(new HttpCookie("Token", coookieValue));
-                    Response.Redirect("Dashboard.aspx");
+                    Response.Redirect("Default.aspx");
                 }
                 else
                 {
-                    Response.Write("Incorrect password");
+                    incorrectPassword.Visible = true;
                 }
             }
             else
             {
-                Response.Write("No such user exists");
+                incorrectUser.Visible = true;
             }
         }
     }

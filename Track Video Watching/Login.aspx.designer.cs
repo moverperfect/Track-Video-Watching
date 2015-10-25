@@ -13,6 +13,51 @@ namespace Track_Video_Watching {
     public partial class Login {
         
         /// <summary>
+        /// account control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor account;
+        
+        /// <summary>
+        /// loginButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor loginButton;
+        
+        /// <summary>
+        /// registerButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor registerButton;
+        
+        /// <summary>
+        /// incorrectPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl incorrectPassword;
+        
+        /// <summary>
+        /// incorrectUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl incorrectUser;
+        
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -28,7 +73,7 @@ namespace Track_Video_Watching {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtUsername;
         
         /// <summary>
         /// txtPassword control.
@@ -37,7 +82,7 @@ namespace Track_Video_Watching {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPassword;
         
         /// <summary>
         /// cmdLogin control.
@@ -47,14 +92,5 @@ namespace Track_Video_Watching {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button cmdLogin;
-        
-        /// <summary>
-        /// cmdRegister control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cmdRegister;
     }
 }
