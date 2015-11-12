@@ -46,7 +46,7 @@ namespace Track_Video_Watching {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtChannel;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtChannel;
         
         /// <summary>
         /// Calendar1 control.

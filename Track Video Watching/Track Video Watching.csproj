@@ -41,7 +41,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MySql.Data">
-      <HintPath>..\..\Steam Data Collection\Steam Data Collection Server\MySql.Data.dll</HintPath>
+      <HintPath>D:\Projects\Track Video Watching\Track Video Watching\bin\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AddNewVideo.aspx" />
+    <Content Include="ajaxHelper.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
@@ -82,6 +83,13 @@
     </Compile>
     <Compile Include="AddNewVideo.aspx.designer.cs">
       <DependentUpon>AddNewVideo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ajaxHelper.aspx.cs">
+      <DependentUpon>ajaxHelper.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ajaxHelper.aspx.designer.cs">
+      <DependentUpon>ajaxHelper.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
