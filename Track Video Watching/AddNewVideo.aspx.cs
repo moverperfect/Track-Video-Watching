@@ -52,10 +52,10 @@ namespace Track_Video_Watching
                 {
                     platform = txtPlatform.Text;
                 }
-                mysql.NonQuery("INSERT INTO tbl_records ( FK_UserID, Video_Platform, Date_Watched, Channel, Length) VALUES ( @1, @2, @3, @4, @5 );", user.Rows[0][0].ToString(), platform, Calendar1.SelectedDate.ToString("yyyy-MM-dd"), txtChannel.Text, txtHour.Text + ":" + txtMin.Text + ":" + txtSec.Text);
+                mysql.NonQuery("INSERT INTO tbl_records ( FK_UserID, Video_Platform, Date_Watched, Channel, Length) VALUES ( @1, @2, @3, @4, @5 );", user.Rows[0][0].ToString(), platform, Calendar1.SelectedDate.ToString("yyyy-MM-dd"), txtChannel.Value, txtHour.Text + ":" + txtMin.Text + ":" + txtSec.Text);
                 cboPlatform.Text = "YouTube";
                 txtPlatform.Text = "";
-                txtChannel.Text = "";
+                txtChannel.Value = "";
                 txtHour.Text = "";
                 txtMin.Text = "";
                 txtSec.Text = "";

@@ -4,7 +4,34 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Add a new video</title>    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script>
+        $(function() {
+            var channels = $.ajax({
+                url: "/ajaxHelper.aspx",
+                dataType: "jsonp",
+                data: {
+                    'action': "channelsearch",
+                    'format': "json"
+                },
+                async: false,
+                success: function(data) {
+                    response(data);
+                }
+            }).responseText;
+
+            channels = $.parseJSON(channels.split("<!DOCTYPE html>")[0]);
+            $("#txtChannel").autocomplete({
+                source: channels
+            });
+        })
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -26,7 +53,7 @@
         <br />
         <br />
         Channel<br />
-        <asp:TextBox ID="txtChannel" runat="server"></asp:TextBox>
+        <input id="txtChannel" runat="server" class="form-control"/>
         <br />
         <br />
         Date uploaded/Watched<asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
